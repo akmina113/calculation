@@ -4,6 +4,7 @@ from flask_cors import CORS #Allow the HTML file to talk to Python
 
 app = Flask(__name__)
 CORS(app)
+#CORS(app, origins=["https://akmina113.github.io"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"], headers=["Content-Type", "Authorization"])
 
 @app.route('/calculate', methods=['POST'])
 
@@ -472,7 +473,9 @@ def calculate():
         return jsonify({"error": str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(host='144.0.0.0', port=5000)
+    #app.run(host='144.0.0.0', port=5000)
+    app.run(debug=True)
+
 
 
 
