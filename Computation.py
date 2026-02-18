@@ -1,11 +1,28 @@
 from datetime import datetime
-from flask import Flask, request, jsonify
+"""from flask import Flask, request, jsonify
 from flask_cors import CORS #Allow the HTML file to talk to Python
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/calculate', methods=['POST'])
+@app.route('/calculate', methods=['POST'])"""
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+    "https://your-frontend-domain.com",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 def calculate():
     try: 
         data = request.json
@@ -472,5 +489,6 @@ def calculate():
 
 if __name__ == '__main__':
     app.run(host='144.0.0.0', port=5000)
+
 
 
