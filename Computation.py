@@ -7,6 +7,9 @@ app = Flask(__name__)
 CORS(app)
 #CORS(app, resources={r"/*": {"origins": "https://akmina113.github.io"}})
 #CORS(app, origins=["https://akmina113.github.io"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"], headers=["Content-Type", "Authorization"])
+@app.route('/health')
+def health_check():
+    return jsonify(status="UP"), 200
 
 @app.route('/calculate', methods=['POST'])
 
@@ -478,6 +481,7 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
     
+
 
 
 
