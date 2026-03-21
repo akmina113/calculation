@@ -4,13 +4,14 @@ from flask_cors import CORS #Allow the HTML file to talk to Python
 import os
 
 app = Flask(__name__)
-CORS(app)
-#CORS(app, resources={r"/*": {"origins": "https://akmina113.github.io"}})
+#CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://akmina113.github.io/computation/"}})
 #CORS(app, origins=["https://akmina113.github.io"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"], headers=["Content-Type", "Authorization"])
 @app.route('/health')
 def health_check():
     return jsonify(status="UP"), 200
-
+    
+@app.route("/")
 #@app.route('/calculate', methods=['POST'])
 
 def calculate():
