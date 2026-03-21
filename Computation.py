@@ -12,7 +12,7 @@ def health_check():
     return jsonify(status="UP"), 200
     
 @app.route("/")
-#@app.route('/calculate', methods=['POST'])
+@app.route('/calculate', methods=['POST'])
 
 def calculate():
     try: 
